@@ -1,21 +1,14 @@
-'''
-Created on 03-Jun-2020
-
-@author: mihir
-'''
 from mpi4py import MPI
-#import numpy
+
 comm = MPI.COMM_WORLD
-rank=comm.rank
-size=comm.size
-name=MPI.Get_processor_name()
+size = comm.Get_size()
+rank = comm.Get_rank()
 
-
-
-shared=(rank+1)*5
-
-comm.send(shared,dest=(rank+1)%size)
-data=comm.recv(source=(rank-1)%size)
-print name
-print 'Rank:',rank
-print 'Recieved:',data,'which came from rank:',(rank-1)%size
+if rank == 0:
+   data = [(x+1)**x for x in range(size)]
+   print 'we will be scattering:',data
+else:
+   data = None
+   
+data = comm.scatter(data, root=0)
+print 'rank',rank,'has data:',data
