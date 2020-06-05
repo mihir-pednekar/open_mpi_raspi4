@@ -4,7 +4,8 @@ from datetime import datetime
 class ScapyUtil:
 
 	def read_pcap(self, path):
-		return packets = rdpcap(path)
+		packets = rdpcap(path)
+		return packets
 		#print(packets[0].show())
 		
 	def write_pcap(pkt, file_name):
