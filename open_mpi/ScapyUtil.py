@@ -14,4 +14,5 @@ class ScapyUtil:
 	def get_timestamp(self):
 		# current date and time
 		now = datetime.now()
-		return datetime.timestamp(now)
+		timestamp = datetime.timestamp(now)
+		return timestamp
