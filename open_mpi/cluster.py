@@ -11,4 +11,10 @@ else:
    data = None
    
 data = comm.scatter(data, root=0)
+data += 1
 print 'rank',rank,'has data:',data
+
+newData = comm.gather(data,root=0)
+
+if rank == 0:
+   print 'master:',newData
