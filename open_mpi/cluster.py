@@ -1,12 +1,14 @@
 from mpi4py import MPI
+from ScapyUtil import ScapyUtil
 
 comm = MPI.COMM_WORLD
 size = comm.Get_size()
 rank = comm.Get_rank()
 
 if rank == 0:
-   data = [(x+1)**x for x in range(size)]
-   print 'we will be scattering:',data
+   scapy = ScapyUtil()
+   packets = scapy.read_pcap("example.pcap")
+   
 else:
    data = None
    
