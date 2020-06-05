@@ -1,0 +1,5 @@
+/.project
+/.pydevproject
+/example.pcap
+/example.pcap.tar.gz
+/snort.logs.tar.gz
