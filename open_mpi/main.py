@@ -2,7 +2,7 @@ from ScapyUtil import ScapyUtil
 
 class FileList:
     
-    def list_of_file(self):
+    def list_of_file(self, size):
         scapy = ScapyUtil()
         packets = scapy.read_pcap("example.pcap")
         i = 0
@@ -15,5 +15,17 @@ class FileList:
             i += 1
             print(file_name)
             new_scapy.write_pcap(pkt, file_name)
-        return file_lst
+            
+        mod_size = (i/size)+1
+        final_lst = []
+        
+        print("Chunking datasets....")
+        for k in range(i):
+            inner_lst = []
+            for j in range(mod_size):
+                inner_lst.append(file_lst[k])
+            
+            final_lst.append(inner_lst)
+            
+        return final_lst
     
