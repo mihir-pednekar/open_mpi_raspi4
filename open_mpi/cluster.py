@@ -14,7 +14,7 @@ if rank == 0:
 else:
    file_lst = None
    
-print("<================ RANK "+str(rank)+" ==================>")
 scatter_lst = comm.scatter(file_lst, root=0)
+print("<================ RANK "+str(rank)+" ==================>")
 print(scatter_lst)
 print("<================ RANK "+str(rank)+" ==================>")
