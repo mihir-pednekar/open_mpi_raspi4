@@ -18,13 +18,18 @@ class FileList:
             
         mod_size = (i/size)+1
         final_lst = []
+        inner_lst = []
         
         print("Chunking datasets....")
         for k in range(i):
-            inner_lst = []
-            for j in range(mod_size):
+            if (k+1) % mod_size == 0:
+                final_lst.append(inner_lst)
+                inner_lst = []
+                
+            else:
                 inner_lst.append(file_lst[k])
-            
+        
+        if len(inner_lst) != 0:
             final_lst.append(inner_lst)
             
         return final_lst
