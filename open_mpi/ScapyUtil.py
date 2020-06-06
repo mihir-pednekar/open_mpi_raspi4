@@ -8,7 +8,7 @@ class ScapyUtil:
 		return packets
 		#print(packets[0].show())
 		
-	def write_pcap(pkt, file_name):
+	def write_pcap(self, pkt, file_name):
 		wrpcap(file_name, pkt, append=True)
 		
 	def get_timestamp(self):
