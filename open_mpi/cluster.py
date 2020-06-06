@@ -20,4 +20,4 @@ if rank == 0:
 else:
    data = None
    
-print(" File List in rank "+rank+" File_Lst : "+bcast_lst)
+print(" File List in rank "+str(rank)+" File_Lst : "+bcast_lst)
