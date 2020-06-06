@@ -14,6 +14,5 @@ if rank == 0:
 else:
    file_lst = None
    
-print(file_lst)
 file_lst = comm.scatter(file_lst, root=0)
-print(" File List in rank "+str(rank)+" File_Lst : "+file_lst)
+print(file_lst)
