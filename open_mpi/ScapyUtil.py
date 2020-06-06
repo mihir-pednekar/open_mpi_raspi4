@@ -3,10 +3,6 @@ from datetime import datetime
 
 class ScapyUtil:
 	
-	def __init__(self):
-		now = datetime.now()
-		self.timestamp = now.strftime("%Y%d%m%H%M%S")
-		
 	def read_pcap(self, path):
 		packets = rdpcap(path)
 		return packets
