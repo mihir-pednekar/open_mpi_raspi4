@@ -14,5 +14,5 @@ if rank == 0:
 else:
    file_lst = None
    
-file_lst = comm.scatter(file_lst, root=0)
+scatter_lst = comm.scatter(file_lst, root=0)
 print(file_lst)
