@@ -6,6 +6,7 @@ comm = MPI.COMM_WORLD
 size = comm.Get_size()
 rank = comm.Get_rank()
 bcast_lst = []
+file_lst = None
 
 if rank == 0:
    file_lst = main.list_of_file()
