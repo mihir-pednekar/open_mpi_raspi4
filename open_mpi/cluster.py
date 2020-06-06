@@ -1,6 +1,6 @@
 from mpi4py import MPI
 from ScapyUtil import ScapyUtil
-import main
+from main import FileList
 
 comm = MPI.COMM_WORLD
 size = comm.Get_size()
@@ -9,7 +9,7 @@ bcast_lst = []
 file_lst = None
 
 if rank == 0:
-   file_lst = main.list_of_file()
+   file_lst = FileList().list_of_file()
    
 else:
    data = None
