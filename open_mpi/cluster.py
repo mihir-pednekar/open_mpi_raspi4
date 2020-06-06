@@ -1,22 +1,17 @@
 from mpi4py import MPI
 from ScapyUtil import ScapyUtil
+import main
 
 comm = MPI.COMM_WORLD
 size = comm.Get_size()
 rank = comm.Get_rank()
 
 if rank == 0:
-   scapy = ScapyUtil()
-   packets = scapy.read_pcap("example.pcap")
+   file_lst = main.list_of_file()
    
 else:
    data = None
    
-data = comm.scatter(data, root=0)
-data += 1
-print 'rank',rank,'has data:',data
+file_lst = comm.scatter(file_lst, root=0)
 
-newData = comm.gather(data,root=0)
-
-if rank == 0:
-   print 'master:',newData
+print(" File List in rank "+rank+" File_Lst : "+file_lst)
