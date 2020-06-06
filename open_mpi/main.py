@@ -23,6 +23,7 @@ class FileList:
         print("Chunking datasets....")
         for k in range(i):
             if (k+1) % mod_size == 0:
+                inner_lst.append(file_lst[k])
                 final_lst.append(inner_lst)
                 inner_lst = []
                 
@@ -33,4 +34,3 @@ class FileList:
             final_lst.append(inner_lst)
             
         return final_lst
-    
