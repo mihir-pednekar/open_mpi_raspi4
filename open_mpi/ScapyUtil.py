@@ -9,7 +9,7 @@ class ScapyUtil:
 		#print(packets[0].show())
 		
 	def write_pcap(self, pkt, file_name):
-		wrpcap(file_name, pkt, append=True)
+		wrpcap(file_name, pkt)
 		
 	def get_timestamp(self):
 		# current date and time
