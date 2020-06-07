@@ -17,4 +17,8 @@ else:
 scatter_lst = comm.scatter(file_lst, root=0)
 print("<================ RANK "+str(rank)+" ==================>")
 print(scatter_lst)
+
+for pcap_file in scatter_lst:
+    pkt = ScapyUtil().read_pcap(pcap_file)
+    print(pkt[0].payload)
 print("<================ RANK "+str(rank)+" ==================>")
