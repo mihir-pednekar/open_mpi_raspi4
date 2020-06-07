@@ -20,5 +20,5 @@ print(scatter_lst)
 
 for pcap_file in scatter_lst:
     pkt = ScapyUtil().read_pcap(pcap_file)
-    print(pkt[0].nsummary())
+    print(pkt[0].summary())
 print("<================ RANK "+str(rank)+" ==================>")
