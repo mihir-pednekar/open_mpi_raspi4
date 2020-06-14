@@ -19,14 +19,14 @@ else:
 scatter_lst = comm.scatter(file_lst, root=0)
 print("<================ RANK "+str(rank)+" Time Started : "+str(n1)+" ms. ===========>")
 print(scatter_lst)
-print("RANK "+str(rank)+" time : "+str(n1.microsecond)+" ms.")
+#print("RANK "+str(rank)+" time : "+str(n1.microsecond)+" ms.")
 for pcap_file in scatter_lst:
     #pkt = ScapyUtil().read_pcap(pcap_file)
     print(pcap_file)
 
 n2=dt.datetime.now()
-(n2-n1).microseconds
+print("RANK "+str(rank)+" TIME DIFF : "+str((n2-n1).microseconds)+" micro_sec.")
 (n2.microsecond-n1.microsecond)/1e6
 
 print("<================ RANK "+str(rank)+" Time Ended : "+str(n2)+" ms. ===========>")
-print("<============= RANK "+str(rank)+" Time Calculated : "+str((n2.microsecond-n1.microsecond)/1e6)+" ms. =====>")
+print("<============= RANK "+str(rank)+" Time Calculated : "+str(((n2-n1).microseconds)/1000)+" ms. =====>")
