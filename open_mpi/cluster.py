@@ -17,7 +17,7 @@ else:
    file_lst = None
    
 scatter_lst = comm.scatter(file_lst, root=0)
-print("<================ RANK "+str(rank)+" ==================>")
+print("<================ RANK "+str(rank)+" Time Started : "+str(n1)+" ms. ===========>")
 print(scatter_lst)
 print("RANK "+str(rank)+" time : "+str(n1.microsecond)+" ms.")
 for pcap_file in scatter_lst:
@@ -28,4 +28,5 @@ n2=dt.datetime.now()
 (n2-n1).microseconds
 (n2.microsecond-n1.microsecond)/1e6
 
-print("<================ RANK "+str(rank)+" ==================>")
+print("<================ RANK "+str(rank)+" Time Ended : "+str(n2)+" ms. ===========>")
+print("<============= RANK "+str(rank)+" Time Calculated : "+str((n2.microsecond-n1.microsecond)/1e6)+" ms. =====>")
