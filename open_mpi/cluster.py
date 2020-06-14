@@ -7,7 +7,6 @@ n1=dt.datetime.now()
 comm = MPI.COMM_WORLD
 size = comm.Get_size()
 rank = comm.Get_rank()
-bcast_lst = []
 file_lst = None
 
 if rank == 0:
@@ -17,16 +16,11 @@ else:
    file_lst = None
    
 scatter_lst = comm.scatter(file_lst, root=0)
-print("<================ RANK "+str(rank)+" Time Started : "+str(n1)+" ms. ===========>")
-print(scatter_lst)
-#print("RANK "+str(rank)+" time : "+str(n1.microsecond)+" ms.")
+print("<================ RANK "+str(rank)+" TIME START : "+str(n1)+" ================>")
 for pcap_file in scatter_lst:
-    #pkt = ScapyUtil().read_pcap(pcap_file)
+    #IDS Algorithm left to be implemented..
     print(pcap_file)
 
 n2=dt.datetime.now()
-print("RANK "+str(rank)+" TIME DIFF : "+str((n2-n1).microseconds)+" micro_sec.")
-(n2.microsecond-n1.microsecond)/1e6
-
-print("<================ RANK "+str(rank)+" Time Ended : "+str(n2)+" ms. ===========>")
-print("<============= RANK "+str(rank)+" Time Calculated : "+str(((n2-n1).microseconds)/1000)+" ms. =====>")
+print("<============= RANK "+str(rank)+" TIME END : "+str(n2)+" ================>")
+print("<============= RANK "+str(rank)+" TIME DIFF : "+str(((n2-n1).microseconds)/1000)+" ms. ================>")
