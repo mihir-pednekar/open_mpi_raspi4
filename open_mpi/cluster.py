@@ -22,5 +22,5 @@ for pcap_file in scatter_lst:
     print(pcap_file)
 
 n2=dt.datetime.now()
-print("<============= RANK "+str(rank)+" TIME END : "+str(n2)+" ================>")
-print("<============= RANK "+str(rank)+" TIME DIFF : "+str(((n2-n1).microseconds)/1000)+" ms. ================>")
+print("<================ RANK "+str(rank)+" TIME END : "+str(n2)+" ================>")
+print("<================ RANK "+str(rank)+" TIME DIFF : "+str(((n2-n1).microseconds)/1000)+" ms. ================>")
