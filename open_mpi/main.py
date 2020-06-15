@@ -12,7 +12,7 @@ class FileList:
             file_lst.append(str(pkt.summary())) 
             i += 1
             
-        mod_size = (i/size)+1
+        mod_size = (i/size)
         final_lst = []
         inner_lst = []
         
