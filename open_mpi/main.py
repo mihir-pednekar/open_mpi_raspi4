@@ -5,28 +5,22 @@ class FileList:
     def list_of_file(self, size):
         scapy = ScapyUtil()
         packets = scapy.read_pcap("example.pcap")
-        i = 0
-        file_lst = []
-        
-        for pkt in packets:
-            file_lst.append(str(pkt.summary())) 
-            i += 1
-            
-        mod_size = (i/size)
-        final_lst = []
+        p_len = len(packets)
+        n = int(p_len/size)
         inner_lst = []
+        #mod_diff = (p_len - (p_len%size) -1)
         
-        print("BREAK INTO DATASETS...")
-        for k in range(i):
-            if (k+1) % mod_size == 0:
-                inner_lst.append(file_lst[k])
-                final_lst.append(inner_lst)
-                inner_lst = []
-                
+        for j in range(0, p_len, n):
+            if j == ((size*n)-n):
+                inner_lst.append(str(j)+":"+str(p_len-1))
+                break
             else:
-                inner_lst.append(file_lst[k])
-        
-        if len(inner_lst) != 0:
-            final_lst.append(inner_lst)
+                inner_lst.append(str(j)+":"+str(j+(n-1)))
             
-        return final_lst
+        print(inner_lst)
+        print("BREAK INTO DATASETS...")
+        
+        return inner_lst
+    
+obj = FileList()
+print(len(obj.list_of_file(4)))
