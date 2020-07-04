@@ -8,10 +8,10 @@ class FileList:
         p_len = len(packets)
         n = int(p_len/size)
         inner_lst = []
-        #mod_diff = (p_len - (p_len%size) -1)
+        size_diff = ((size*n)-n)
         
         for j in range(0, p_len, n):
-            if j == ((size*n)-n):
+            if j == size_diff:
                 inner_lst.append(str(j)+":"+str(p_len-1))
                 break
             else:
@@ -21,6 +21,3 @@ class FileList:
         print("BREAK INTO DATASETS...")
         
         return inner_lst
-    
-obj = FileList()
-print(len(obj.list_of_file(4)))
