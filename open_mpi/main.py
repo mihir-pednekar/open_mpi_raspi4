@@ -20,4 +20,4 @@ class FileList:
         print(inner_lst)
         print("BREAK INTO DATASETS...")
         
-        return inner_lst
+        return inner_lst, packets
