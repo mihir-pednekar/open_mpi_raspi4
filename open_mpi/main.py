@@ -2,9 +2,9 @@ from ScapyUtil import ScapyUtil
 
 class FileList:
     
-    def list_of_file(self, size):
+    def list_of_file(self, size, pcap_file_name):
         scapy = ScapyUtil()
-        packets = scapy.read_pcap("example.pcap")
+        packets = scapy.read_pcap(pcap_file_name)
         p_len = len(packets)
         n = int(p_len/size)
         inner_lst = []
