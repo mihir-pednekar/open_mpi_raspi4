@@ -20,6 +20,7 @@ else:
    
 scatter_lst = comm.scatter(file_lst, root=0)
 #print("<================ RANK "+str(rank)+" TIME START : "+str(n1)+" ================>")
+print(scatter_lst)
 for pcap_file in scatter_lst:
     #IDS Algorithm left to be implemented..
     print(pcap_file)
