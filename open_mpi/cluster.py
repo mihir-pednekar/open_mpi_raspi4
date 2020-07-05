@@ -19,12 +19,9 @@ else:
    file_lst = None
    
 scatter_lst = comm.scatter(file_lst, root=0)
-#print("<================ RANK "+str(rank)+" TIME START : "+str(n1)+" ================>")
-print(scatter_lst)
 for pcap_file in scatter_lst:
     #IDS Algorithm left to be implemented..
     print(pcap_file)
 
 n2=dt.datetime.now()
-#print("<================ RANK "+str(rank)+" TIME END : "+str(n2)+" ================>")
 print("<================ RANK "+str(rank)+" TIME DIFF : "+str(((n2-n1).microseconds)/1000)+" ms. ================>")
