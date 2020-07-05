@@ -18,7 +18,6 @@ if rank == 0:
 else:
    file_lst = None
    
-print(file_lst)
 scatter_lst = comm.scatter(file_lst, root=0)
 #print("<================ RANK "+str(rank)+" TIME START : "+str(n1)+" ================>")
 for pcap_file in scatter_lst:
