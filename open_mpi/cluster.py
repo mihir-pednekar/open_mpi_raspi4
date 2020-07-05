@@ -13,11 +13,12 @@ pcap_file_name = sys.argv[1]
 rule_file_name = sys.argv[2]
 
 if rank == 0:
-   file_lst = FileList().list_of_file(size, pcap_file_name)
+   file_lst, pkts = FileList().list_of_file(size, pcap_file_name)
     
 else:
    file_lst = None
    
+print(file_lst)
 scatter_lst = comm.scatter(file_lst, root=0)
 #print("<================ RANK "+str(rank)+" TIME START : "+str(n1)+" ================>")
 for pcap_file in scatter_lst:
