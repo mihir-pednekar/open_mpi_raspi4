@@ -12,10 +12,14 @@ class FileList:
         
         for j in range(0, p_len, n):
             if j == size_diff:
-                inner_lst.append(str(j)+":"+str(p_len-1))
+                local_lst = []
+                local_lst.append(str(j)+":"+str(p_len-1))
+                inner_lst.append(local_lst)
                 break
             else:
-                inner_lst.append(str(j)+":"+str(j+(n-1)))
+                local_lst = []
+                local_lst.append(str(j)+":"+str(j+(n-1)))
+                inner_lst.append(local_lst)
             
         print(inner_lst)
         print("BREAK INTO DATASETS...")
