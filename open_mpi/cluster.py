@@ -9,14 +9,18 @@ comm = MPI.COMM_WORLD
 size = comm.Get_size()
 rank = comm.Get_rank()
 file_lst = None
+pkts = None
 pcap_file_name = sys.argv[1]
 rule_file_name = sys.argv[2]
+file_list_obj = FileList()
 
 if rank == 0:
-   file_lst, pkts = FileList().list_of_file(size, pcap_file_name)
+   file_lst, pkts = file_list_obj.list_of_file(size, pcap_file_name)
+   rules = file_list_obj.read_rule(rule_file_name)
     
 else:
-   file_lst = None
+   file_lst, pkts = file_list_obj.list_of_file(size, pcap_file_name)
+   rules = file_list_obj.read_rule(rule_file_name)
    
 scatter_lst = comm.scatter(file_lst, root=0)
 for pcap_file in scatter_lst:

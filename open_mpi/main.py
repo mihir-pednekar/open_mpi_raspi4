@@ -25,3 +25,9 @@ class FileList:
         print("<================ BREAK INTO DATASETS ================>")
         
         return inner_lst, packets
+    
+    def read_rule(self, rule_file_name):
+        #read all rules
+        rule_file = open(rule_file_name, 'r')
+        rules = rule_file.readlines()
+        return rules
