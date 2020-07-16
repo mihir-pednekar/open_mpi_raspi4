@@ -31,3 +31,37 @@ class FileList:
         rule_file = open(rule_file_name, 'r')
         rules = rule_file.readlines()
         return rules
+    
+    def map_of_rules(self, rules):
+        list_rule_map = []
+        for rule in rules:
+            rule_map = {}
+            x = rule.split(" ", 7)
+            rule_map['task'] = x[0]
+            rule_map['proto'] = x[1]
+            rule_map['direc'] = x[4]
+            if x[4] == '->':
+                rule_map['src_ip'] = x[2]
+                rule_map['src_port'] = x[3]
+                rule_map['dst_ip'] = x[5]
+                rule_map['dst_port'] = x[6]
+                
+            else:
+                rule_map['src_ip'] = x[5]
+                rule_map['src_port'] = x[6]
+                rule_map['dst_ip'] = x[2]
+                rule_map['dst_port'] = x[3]
+            
+            trim_str = x[7].strip('(').strip(')')
+            trim_list = trim_str.split("; ")
+            temp_map = {}
+            
+            for trim in trim_list:
+                temp_list = trim.strip(';').split(":")
+                print(temp_list)
+                temp_map[temp_list[0]] = temp_list[1]
+            
+            rule_map['para'] = temp_map
+            list_rule_map.append(rule_map)
+        
+        return list_rule_map
