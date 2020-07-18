@@ -19,14 +19,16 @@ if rank == 0:
    file_lst, pkts = file_list_obj.list_of_file(size, pcap_file_name)
    rules = file_list_obj.read_rule(rule_file_name)
    for pkt in pkts:
-       print(pkt['Ethernet'].fields_desc.name)
+       for field in pkt['Ethernet'].fields_desc:
+           print(field.name)
     
 else:
    file_lst, pkts = file_list_obj.list_of_file(size, pcap_file_name)
    rules = file_list_obj.read_rule(rule_file_name)
    rule_map = file_list_obj.map_of_rules(rules)
    for pkt in pkts:
-       print(pkt['Ethernet'].fields_desc.name)
+       for field in pkt['Ethernet'].fields_desc:
+           print(field.name)
    
 scatter_lst = comm.scatter(file_lst, root=0)
 
