@@ -24,7 +24,7 @@ class FileList:
         print(inner_lst)
         print("<================ BREAK INTO DATASETS ================>")
         
-        return inner_lst, packets
+        return inner_lst, packets, p_len
     
     def read_rule(self, rule_file_name):
         #read all rules
@@ -33,12 +33,13 @@ class FileList:
         return rules
     
     def map_of_rules(self, rules):
-        list_rule_map = []
+        #list_rule_map = []
+        final_map = {'Ethernet' : [], 'IP' : [], 'ICMP' : []}
         for rule in rules:
             rule_map = {}
             x = rule.split(" ", 7)
             rule_map['task'] = x[0]
-            rule_map['proto'] = x[1]
+            #rule_map['proto'] = x[1]
             rule_map['direc'] = x[4]
             if x[4] == '->':
                 rule_map['src_ip'] = x[2]
@@ -62,6 +63,11 @@ class FileList:
                 temp_map[temp_list[0]] = temp_list[1]
             
             rule_map['para'] = temp_map
-            list_rule_map.append(rule_map)
+            final_map[x[1]].append(rule_map)
+            #list_rule_map.append(rule_map)
         
-        return list_rule_map
+        return final_map
+    
+#obj = FileList()
+#rules = obj.read_rule("local.rules")
+#print(obj.map_of_rules(rules))
