@@ -45,7 +45,7 @@ print("max : "+max_index)
 #traverse list of packets
 proto_map = {}
 for itr in range(0, p_len):
-    if pkts[itr].haslayer(Ethernet):
+    if pkts[itr].haslayer(Ether):
         print("haslayer(Ethernet)")
            
     elif pkts[itr].haslayer(IP):
