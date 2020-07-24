@@ -26,7 +26,7 @@ if rank == 0:
 else:
    rules = file_list_obj.read_rule(rule_file_name)
    list_rule_map = file_list_obj.map_of_rules(rules)
-   file_lst, pkts = file_list_obj.list_of_file(size, pcap_file_name)
+   file_lst, pkts, p_len = file_list_obj.list_of_file(size, pcap_file_name)
    for pkt in pkts:
        for field in pkt['Ethernet'].fields_desc:
            print(field.name)
