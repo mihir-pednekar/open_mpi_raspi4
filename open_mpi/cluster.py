@@ -37,8 +37,8 @@ for scattr in scatter_lst:
     min_index = int(scat_list[0])
     max_index = int(scat_list[1])
 
-print("min : "+min_index)
-print("max : "+max_index)
+print("min : "+str(min_index))
+print("max : "+str(max_index))
 #traverse list of packets
 proto_map = {}
 for itr in range(0, p_len):
