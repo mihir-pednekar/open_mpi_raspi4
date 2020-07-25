@@ -48,8 +48,11 @@ for itr in range(0, p_len):
     if pkts[itr].haslayer('Ethernet'):
         print("haslayer(Ethernet)")
            
-    elif pkts[itr].haslayer(IP):
+    if pkts[itr].haslayer('IP'):
         print("haslayer(IP)")
+        
+    if pkts[itr].haslayer('TCP'):
+        print("haslayer(TCP)")
            
 for pkt in pkts:
     for field in pkt['Ethernet'].fields_desc:
