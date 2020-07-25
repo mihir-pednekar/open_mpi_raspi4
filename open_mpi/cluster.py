@@ -40,7 +40,7 @@ for scattr in scatter_lst:
 print("min : "+str(min_index))
 print("max : "+str(max_index))
 #traverse list of packets
-proto_map = {0: {'Ethernet': {}}}
+proto_map = {0: {'Ethernet': {}, 'IP': {}, 'TCP': {}}}
 for itr in range(0, p_len):
     for protocol in rule_map:
         if len(rule_map[protocol]) != 0:
