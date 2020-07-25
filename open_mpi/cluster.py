@@ -47,7 +47,7 @@ for itr in range(0, p_len):
             if pkts[itr].haslayer(protocol):
                 print("haslayer("+protocol+")")
                 for field in pkts[itr][protocol].fields_desc:
-                    proto_map[itr][protocol][field] = getattr(pkts[itr][protocol], field)
+                    proto_map[itr][protocol][field] = getattr(pkts[itr][protocol], field.name)
            
 print(proto_map)
 
