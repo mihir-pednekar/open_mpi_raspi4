@@ -40,13 +40,17 @@ for scattr in scatter_lst:
 print("min : "+str(min_index))
 print("max : "+str(max_index))
 #traverse list of packets
-proto_map = {0: {'Ethernet': {}, 'IP': {}, 'TCP': {}}}
+#proto_map = {0: {'Ethernet': {}, 'IP': {}, 'TCP': {}}}
+proto_map = {}
 for itr in range(0, p_len):
+    proto_map[itr] = {}
     for protocol in rule_map:
+        proto_map[itr][protocol] = {}
         if len(rule_map[protocol]) != 0:
             if pkts[itr].haslayer(protocol):
                 print("haslayer("+protocol+")")
                 for field in pkts[itr][protocol].fields_desc:
+                    proto_map[itr][protocol][field] = {}
                     proto_map[itr][protocol][field] = getattr(pkts[itr][protocol], field.name)
            
 print(proto_map)
