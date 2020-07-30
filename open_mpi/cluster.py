@@ -42,7 +42,7 @@ print("max : "+str(max_index))
 #traverse list of packets
 #proto_map = {0: {'Ethernet': {}, 'IP': {}, 'TCP': {}}}
 proto_map = {}
-for itr in range(0, 2):
+for itr in range(0, p_len):
     proto_map[itr] = {}
     for protocol in rule_map:
         proto_map[itr][protocol] = {}
