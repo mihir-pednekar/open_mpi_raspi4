@@ -1,2 +1,2 @@
 alert IP any any -> any any (msg:"IP packet detected";)
-alert IP 192.168.1.1 any <- 192.168.2.1 any (msg:"Mihir detected";)
+alert TCP 192.168.1.1 any <- 192.168.2.1 any (msg:"Mihir detected";)
