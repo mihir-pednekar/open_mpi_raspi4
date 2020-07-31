@@ -42,7 +42,7 @@ print("max : "+str(max_index))
 #traverse list of packets
 #proto_map = {0: {'Ethernet': {}, 'IP': {}, 'TCP': {}}}
 proto_map = {}
-for itr in range(0, p_len):
+for itr in range(min_index, max_index+1):
     proto_map[itr] = {}
     for protocol in rule_map:
         proto_map[itr][protocol] = {}
@@ -54,6 +54,10 @@ for itr in range(0, p_len):
                     proto_map[itr][protocol][field.name] = getattr(pkts[itr][protocol], field.name)
            
 print(proto_map)
+print("<================================>")
+print(rule_map)
+
+
 
 n2=dt.datetime.now()
 print("<================ RANK "+str(rank)+" TIME DIFF : "+str(((n2-n1).microseconds)/1000)+" ms. ================>")
