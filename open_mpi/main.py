@@ -34,7 +34,7 @@ class FileList:
     
     def map_of_rules(self, rules):
         #list_rule_map = []
-        final_map = {'Ethernet' : [], 'IP' : [], 'ICMP' : []}
+        final_map = {'Ethernet' : [], 'IP' : [], 'TCP' : [], 'ICMP' : []}
         for rule in rules:
             rule_map = {}
             x = rule.split(" ", 7)
@@ -59,7 +59,7 @@ class FileList:
             
             for trim in trim_list:
                 temp_list = trim.strip(';').split(":")
-                print(temp_list)
+                #print(temp_list)
                 temp_map[temp_list[0]] = temp_list[1]
             
             rule_map['para'] = temp_map
