@@ -31,33 +31,15 @@ else:
 scatter_lst = comm.scatter(file_lst, root=0)
 
 # get max min index from scatter_lst
-
-for scattr in scatter_lst:
-    scat_list = scattr.split(':', 1)
-    min_index = int(scat_list[0])
-    max_index = int(scat_list[1])
-
+min_index, max_index = file_list_obj.get_min_max(scatter_lst)
 print("min : "+str(min_index))
 print("max : "+str(max_index))
-#traverse list of packets
-#proto_map = {0: {'Ethernet': {}, 'IP': {}, 'TCP': {}}}
-proto_map = {}
-for itr in range(min_index, max_index+1):
-    proto_map[itr] = {}
-    for protocol in rule_map:
-        proto_map[itr][protocol] = {}
-        if len(rule_map[protocol]) != 0:
-            if pkts[itr].haslayer(protocol):
-                print("haslayer("+protocol+")")
-                for field in pkts[itr][protocol].fields_desc:
-                    proto_map[itr][protocol][field.name] = {}
-                    proto_map[itr][protocol][field.name] = getattr(pkts[itr][protocol], field.name)
-           
+
+#create proto_map = {0: {'Ethernet': {}, 'IP': {}, 'TCP': {}}}
+proto_map = file_list_obj.create_proto_map(min_index, max_index, pkts, rule_map)
 print(proto_map)
 print("<================================>")
 print(rule_map)
-
-
 
 n2=dt.datetime.now()
 print("<================ RANK "+str(rank)+" TIME DIFF : "+str(((n2-n1).microseconds)/1000)+" ms. ================>")
