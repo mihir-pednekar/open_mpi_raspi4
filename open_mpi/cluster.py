@@ -32,13 +32,13 @@ scatter_lst = comm.scatter(file_lst, root=0)
 
 # get max min index from scatter_lst
 min_index, max_index = file_list_obj.get_min_max(scatter_lst)
-print("min : "+str(min_index))
-print("max : "+str(max_index))
+#print("min : "+str(min_index))
+#print("max : "+str(max_index))
 
 #create proto_map = {0: {'Ethernet': {}, 'IP': {}, 'TCP': {}}}
 proto_map = file_list_obj.create_proto_map(min_index, max_index, pkts, rule_map)
 #print(proto_map)
-print("<================================>")
+#print("<================================>")
 #print(rule_map)
 print(file_list_obj.process_pkt(min_index, max_index, proto_map, rule_map))
 
