@@ -108,12 +108,12 @@ class FileList:
                          msg_set.add(field_map['para']['msg'])
         return msg_set
         
-file_list_obj = FileList()
-rules = file_list_obj.read_rule("local.rules")
-rule_map = file_list_obj.map_of_rules(rules)
-file_lst, pkts, p_len = file_list_obj.list_of_file(4, "example.pcap")
-scatter_lst = ['0:19']
-min_index, max_index = file_list_obj.get_min_max(scatter_lst)
-proto_map = file_list_obj.create_proto_map(min_index, max_index, pkts, rule_map)
-print(proto_map)
-print(file_list_obj.process_pkt(min_index, max_index, proto_map, rule_map))
+#file_list_obj = FileList()
+#rules = file_list_obj.read_rule("local.rules")
+#rule_map = file_list_obj.map_of_rules(rules)
+#file_lst, pkts, p_len = file_list_obj.list_of_file(4, "example.pcap")
+#scatter_lst = ['0:19']
+#min_index, max_index = file_list_obj.get_min_max(scatter_lst)
+#proto_map = file_list_obj.create_proto_map(min_index, max_index, pkts, rule_map)
+#print(proto_map)
+#print(file_list_obj.process_pkt(min_index, max_index, proto_map, rule_map))

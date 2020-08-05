@@ -37,9 +37,10 @@ print("max : "+str(max_index))
 
 #create proto_map = {0: {'Ethernet': {}, 'IP': {}, 'TCP': {}}}
 proto_map = file_list_obj.create_proto_map(min_index, max_index, pkts, rule_map)
-print(proto_map)
+#print(proto_map)
 print("<================================>")
-print(rule_map)
+#print(rule_map)
+print(file_list_obj.process_pkt(min_index, max_index, proto_map, rule_map))
 
 n2=dt.datetime.now()
 print("<================ RANK "+str(rank)+" TIME DIFF : "+str(((n2-n1).microseconds)/1000)+" ms. ================>")
