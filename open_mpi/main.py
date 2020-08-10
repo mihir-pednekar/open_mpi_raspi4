@@ -101,12 +101,36 @@ class FileList:
              for proto in rule_map:
                  if len(rule_map[proto]) != 0:
                      for field_map in rule_map[proto]:
-                         if field_map['src']!='any' and field_map['dst']!='any' and field_map['src']!=proto_map[itr]['IP']['src'] and field_map['dst']!=proto_map[itr]['IP']['dst']:
+                         if proto=='IP' and field_map['src']!='any' and field_map['dst']!='any' and field_map['src']!=proto_map[itr]['IP']['src'] and field_map['dst']!=proto_map[itr]['IP']['dst']:
                              break;
-                         elif field_map['sport']!='any' and field_map['dport']!='any' and field_map['sport']!=proto_map[itr]['TCP']['sport'] and field_map['dport']!=proto_map[itr]['TCP']['dport']:
+                         elif proto=='TCP' and field_map['sport']!='any' and field_map['dport']!='any' and field_map['sport']!=proto_map[itr]['TCP']['sport'] and field_map['dport']!=proto_map[itr]['TCP']['dport']:
                              break;
-                         msg_set.add(field_map['para']['msg'])
+                         elif proto=='Raw' and len(proto_map[itr]['Raw'])!=0:
+                             #print(proto_map[itr]['Raw'])
+                             if field_map['src']!='any' and field_map['dst']!='any' and field_map['src']!=proto_map[itr]['IP']['src'] and field_map['dst']!=proto_map[itr]['IP']['dst']:
+                                 #print(proto_map[itr]['Raw'])
+                                 break;
+                             elif field_map['sport']!='any' and field_map['dport']!='any' and field_map['sport']!=proto_map[itr]['TCP']['sport'] and field_map['dport']!=proto_map[itr]['TCP']['dport']:
+                                 #print(proto_map[itr]['Raw'])
+                                 break;
+                             elif proto_map[itr]['Raw']['load'].find(field_map['para']['content'].encode())!=(-1):
+                                 #print(proto_map[itr]['Raw']['load'])
+                                 msg_set.add(field_map['para']['msg'])
+                                 break;
+                         if proto!='Raw':
+                             msg_set.add(field_map['para']['msg'])
         return msg_set
+    
+    def create_large_pcap_file(self, pcap_file_read, pcap_file_write, itr):
+        scapy = ScapyUtil()
+        packets = scapy.read_pcap(pcap_file_read)
+        
+        for i in range(0,itr):
+            for pkt in packets:
+                #print(pkt.show())
+                scapy.write_pcap(pkt, pcap_file_write)
+        
+        print(len(scapy.read_pcap(pcap_file_write)))
         
 #file_list_obj = FileList()
 #rules = file_list_obj.read_rule("local.rules")
@@ -117,3 +141,5 @@ class FileList:
 #proto_map = file_list_obj.create_proto_map(min_index, max_index, pkts, rule_map)
 #print(proto_map)
 #print(file_list_obj.process_pkt(min_index, max_index, proto_map, rule_map))
+#file_list_obj.create_large_pcap_file("example-test.pcap", "example-test-new.pcap", 12)
+#print("Done")

@@ -1,3 +1,3 @@
 alert IP any any -> any any (msg:"IP packet detected";)
-alert TCP 192.168.0.102 any <- 192.168.0.101 any (msg:"TCP packet detected";)
-alert Raw 192.168.0.102 any <- 192.168.0.101 any (msg:"Raw content detected";)
+alert TCP 192.168.0.101 any <- 192.168.0.102 any (msg:"TCP packet detected";)
+alert Raw 192.168.0.101 any <- 192.168.0.102 any (msg:"Raw content detected"; content:"GET /action.php?search=mihir";)
