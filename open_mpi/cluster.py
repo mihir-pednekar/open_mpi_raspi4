@@ -22,6 +22,7 @@ if rank == 0:
    rules = file_list_obj.read_rule(rule_file_name)
    rule_map = file_list_obj.map_of_rules(rules)
    file_lst, pkts, p_len = file_list_obj.list_of_file(size, pcap_file_name)
+   print(file_lst)
     
 else:
    rules = file_list_obj.read_rule(rule_file_name)
