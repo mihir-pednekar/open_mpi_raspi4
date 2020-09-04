@@ -132,7 +132,7 @@ class FileList:
         
         print(len(scapy.read_pcap(pcap_file_write)))
         
-file_list_obj = FileList()
+#file_list_obj = FileList()
 #rules = file_list_obj.read_rule("local.rules")
 #rule_map = file_list_obj.map_of_rules(rules)
 #file_lst, pkts, p_len = file_list_obj.list_of_file(4, "example.pcap")
@@ -141,5 +141,6 @@ file_list_obj = FileList()
 #proto_map = file_list_obj.create_proto_map(min_index, max_index, pkts, rule_map)
 #print(proto_map)
 #print(file_list_obj.process_pkt(min_index, max_index, proto_map, rule_map))
-file_list_obj.create_large_pcap_file("example-test.pcap", "example-test-new.pcap", 1000)
-print("Done")
+#print("Starting")
+#file_list_obj.create_large_pcap_file("example-test.pcap", "example-test-new.pcap", 1000)
+#print("Done")
